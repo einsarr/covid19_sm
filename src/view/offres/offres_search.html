@@ -1,0 +1,28 @@
+{include file='src/view/layout_front/header.html'} {include file='src/view/layout_front/topbar.html'}
+<div class="content-wrapper">
+    <div class="container">
+        <section class="content">
+            <div class="row">
+                {foreach from=$offres item=offre}
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h4 class="text-danger">{$offre->getCategorie()->getLibelle()} </h4>
+                            {$offre->getLibelle()}
+                            <p>
+                                {$offre->getEntreprise()->getNom_complet()}
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="{$url_base}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                {/foreach}
+            </div>
+        </section>
+    </div>
+</div>
+{include file='src/view/layout_front/footer.html'}

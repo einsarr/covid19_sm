@@ -1,0 +1,94 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <a href="{$url_base}Profil/add" class="btn btn-primary">
+                <span class="fa fa-plus"></span> Nouveau
+            </a>
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.box -->
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">LISTE DES PROFILS</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libellé</th>
+                            <th>Description</th>
+                            <th>Etat</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach from=$profils item=profil}
+                        <tr>
+                            <td>{++$num}</td>
+                            <td>{$profil->getLibelle()}</td>
+                            <td>{$profil->getDescription()}</td>
+                            <td>
+                                {if $profil->getEtat() =="actif"}
+                                <span class="text-success">
+                                    <i class="fa fa-spin fa-refresh"></i>
+                                </span> {else}
+                                <span class="text-danger"><i class="fa fa-lock"></i></span> {/if}
+                            </td>
+                            <td>
+                                <a href="{$url_base}Profil/delete/{$profil->getId()}" class="btn btn-danger" onclick="return confirm('Etez-vous sûre de vouloir supprimer')"><span class="fa fa-trash"></span></a>
+                                <a href="{$url_base}Profil/edit/{$profil->getId()}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+</div>
+<div class="modal fade" id="modal-profil">
+    <div class="modal-dialog">
+        <form method="POST" id="profil_form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">AJOUT D'UN PROFIL</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="libelle">Libellé profil</label>
+                        <input type="text" name="libelle" class="form-control" id="libelle">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" class="form-control" id="description">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label class="">Etat</label>
+                            <select class="form-control" name="etat_profil" id="etat_profil">
+                                <option value="">---Choisir l'etat du profil---</option>
+                                <option value="actif">actif</option>
+                                <option value="bloque">bloqué</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" name="action" class="btn btn-primary" value="Add" />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

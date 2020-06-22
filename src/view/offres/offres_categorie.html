@@ -1,0 +1,30 @@
+{include file='src/view/layout_front/header.html'} {include file='src/view/layout_front/topbar.html'}
+
+<div class="content-wrapper">
+    <div class="container">
+        <section class="content">
+            <h1>{$categorie->getLibelle()}</h1>
+            <div class="row">
+                {foreach from=$categorie->getOffres() item=offre}
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3></h3>
+                            {$offre->getLibelle()}
+                            <p>
+                                {$offre->getEntreprise()->getNom_complet()}
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                {/foreach}
+            </div>
+        </section>
+    </div>
+</div>
+{include file='src/view/layout_front/footer.html'}

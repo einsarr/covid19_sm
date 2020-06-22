@@ -1,0 +1,54 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.box -->
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">LISTE DES CLIENTS</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>CNI</th>
+                            <th>Employeur</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {$num=1} {foreach from=$clients item=client}
+                        <tr>
+                            <td>{$num++}</td>
+                            <td>{$client->getPrenom()}</td>
+                            <td>{$client->getNom()}</td>
+                            <td>{$client->getTelephone()}</td>
+                            <td>{$client->getEmail()}</td>
+                            <td>{$client->getCni()}</td>
+                            <td>{$client->getEmployeur()->getNom()}</td>
+                            <td>
+                                <a href="{$url_base}Client/delete/{$client->getId()}" class="btn btn-danger" onclick="return confirm('Etez-vous sûre de vouloir supprimer')"><span class="fa fa-trash"></span></a>
+                                <a href="{$url_base}Client/edit/{$client->getId()}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                                <a href="{$url_base}Compte/add_new_compte/{$client->getId()}" class="btn btn-primary"><span class="fa fa-credit-card"></span></a>
+                                <a href="{$url_base}Compte/liste_compte_client/{$client->getId()}" class="btn btn-success"><span class="fa fa-cc-mastercard"></span></a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+</div>
