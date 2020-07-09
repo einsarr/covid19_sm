@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-22 12:09:49
+/* Smarty version 3.1.30, created on 2020-06-25 16:51:06
   from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\layout_front\footer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef0836d753575_06698923',
+  'unifunc' => 'content_5ef4b9daf3f266_37026371',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2c6d0ada2223b753b9ef8d07ea6626ace2127c2b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\layout_front\\footer.html',
-      1 => 1592698221,
+      1 => 1593096659,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0836d753575_06698923 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef4b9daf3f266_37026371 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
@@ -65,6 +65,8 @@ public/template/dist/js/adminlte.min.js"><?php echo '</script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 public/template/dist/js/demo.js"><?php echo '</script'; ?>
 >
+
+
 </body>
 
 </html><?php }

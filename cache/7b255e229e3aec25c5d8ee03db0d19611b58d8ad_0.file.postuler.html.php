@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-22 12:09:55
-  from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\categories\add.html" */
+/* Smarty version 3.1.30, created on 2020-06-25 01:15:12
+  from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\offres\postuler.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef083737dc393_74482170',
+  'unifunc' => 'content_5ef3de8075f733_30918134',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '1d82ebbb71ffc5e524a3a8c4599afabd6cd52d7b' => 
+    '7b255e229e3aec25c5d8ee03db0d19611b58d8ad' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\categories\\add.html',
+      0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\offres\\postuler.html',
       1 => 1592698221,
       2 => 'file',
     ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:src/view/layout_front/footer.html' => 1,
   ),
 ),false)) {
-function content_5ef083737dc393_74482170 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef3de8075f733_30918134 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -46,13 +46,15 @@ $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_sma
 </span> <?php }?>
                         </div>
                         <form method="POST" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Categorie/save">
+Reponse/save">
                             <div class="form-group">
-                                <label>Libelle</label>
+                                <label>Titre</label>
+                                <input type="hidden" name="offre_id" value="<?php echo $_smarty_tpl->tpl_vars['offre']->value;?>
+">
                                 <input type="text" class="form-control" name="libelle">
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>Lettre de motivation</label>
                                 <textarea name="description" class="form-control"></textarea>
                             </div>
                             <div class="form-group">

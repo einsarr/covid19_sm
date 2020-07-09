@@ -1,0 +1,66 @@
+{include file='src/view/layout/header.html'} {include file='src/view/layout/topbar.html'}{include file='src/view/layout/sidebar.html'}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h3 class="box-title">MODIFICATION DE MON OFFRE</h3>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.box -->
+        <div class="box">
+            <div class="box-header">
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <form method="POST" action="{$url_base}Offre/update" class="col-md-6">
+                    <!-- <div class="form-group">
+                        <input type="hidden" name="offre_id" id="offre_id" value="{$offre->getId()}">
+                        <input type="hidden" name="user_id" id="user_id" value="{$user->getId()}">
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="cni">Expérience professionnelle</label>
+                        <textarea name="experience" id="experience" cols="30" rows="10" class="form-control">
+                            {$cv->getExperience()}
+                        </textarea>
+                    </div> -->
+
+                    <!-- <div class="form-group">
+                        <label class="">Catégorie</label>
+                        <select class="form-control" name="categorie_id" id="categorie_id">
+                            {foreach from=$categories item=categorie}
+                                {if $categorie->getId() == $offre->getId()}
+                                <option selected value="{$categorie->getId()}">{$offre->getLibelle()}</option>
+                                {else}
+                                <option value="{$categorie->getId()}">{$categorie->getLibelle()}</option>
+                                {/if}
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="">Entreprise</label>
+                        <select class="form-control" name="entreprise_id" id="entreprise_id">
+                            {foreach from=$categories item=categorie}
+                                {if $categorie->getId() == $offre->getId()}
+                                <option selected value="{$categorie->getId()}">{$offre->getLibelle()}</option>
+                                {else}
+                                <option value="{$categorie->getId()}">{$categorie->getLibelle()}</option>
+                                {/if}
+                            {/foreach}
+                        </select>
+                    </div> -->
+
+
+                    <div class="form-group">
+                        <input type="submit" name="action" class="btn btn-warning" value="Mèttre à jour" />
+                        <button type="button" class="btn btn-danger">Fermer</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+</div>
+{include file='src/view/layout/footer.html'}

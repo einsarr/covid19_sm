@@ -22,58 +22,34 @@ class CvRepository extends Model{
 	/**
 	 * Le cv d'un demandeur d'emploi
 	 */
-	/*
-	public function get_cv_demandeur($id_demandeur)
-	{
-		if($this->db != null)
-		{
-			return $this->db->createQuery("SELECT c FROM Cv c WHERE c.user_id=$id_demandeur")->getSingleResult();
-		}
-	}*/
-	public function get_cv_demandeur($id)
-	{
-		if($this->db != null)
-		{
-			return $this->db->getRepository('Cv')->find(array('id' => $id));
-		}
-	}
+	public function get_cv_demandeur($id_demandeur){
+        $query = $this->db
+            ->createQuery('SELECT c FROM Cv c WHERE c.user = :id_demandeur')
+            ->setParameter('id_demandeur', $id_demandeur);
+        $user = $query->getSingleResult();
+        return $user;
+    }
 	
-
-
-
-
-
-
-
-
-
-
-
-
-	public function getEmployeur($id)
-	{
+	public function updateCv($cv){
 		if($this->db != null)
 		{
-			return $this->db->getRepository('Employeur')->find(array('id' => $id));
+			$getCv = $this->db->find('Cv', $cv->getId());
+			if($getCv != null)
+			{
+				$getCv->setExperience($cv->getExperience());
+				$getCv->setFormation($cv->getFormation());
+				$getCv->setCompetence($cv->getCompetence());
+				$getCv->setDivers($cv->getDivers());
+				$getCv->setUser($cv->getUser());
+				$this->db->flush();
+			}else {
+				die("Objet ".$cv->getId()." does not existe!!");
+			}	
 		}
 	}
 	public function getUser($id)
-	{
-		if($this->db != null)
-		{
-			return $this->db->getRepository('User')->find(array('id' => $id));
-		}
-	}
-	public function getProfil($id)
-	{
-		if($this->db != null)
-		{
-			return $this->db->getRepository('Profil')->find(array('id' => $id));
-		}
-	}
-	public function nombre_cvs(){
-        $query = $this->db->createQuery('SELECT COUNT(*) FROM cv');
-        return $query->getResult();
+    {
+        return $this->db->getRepository("User")->find(array("id"=>$id));
     }
 	public function addCv($cv)
 	{
@@ -85,6 +61,36 @@ class CvRepository extends Model{
 			return $cv->getId();
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	public function getProfil($id)
+	{
+		if($this->db != null)
+		{
+			return $this->db->getRepository('Profil')->find(array('id' => $id));
+		}
+	}
+	public function nombre_cvs(){
+        $query = $this->db->createQuery('SELECT COUNT(*) FROM cv');
+        return $query->getResult();
+    }
+	
 	public function listeCv(){
 		if($this->db != null)
 		{
@@ -114,25 +120,7 @@ class CvRepository extends Model{
 		}
 	}
 	
-	public function updateCv($cv){
-		if($this->db != null)
-		{
-			$getCv = $this->db->find('Cv', $cv->getId());
-			if($getCv != null)
-			{
-				$getCv->setPrenom($cv->getPrenom());
-				$getCv->setNom($cv->getNom());
-				$getCv->setCni($cv->getCni());
-				$getCv->setEmail($cv->getEmail());
-				$getCv->setTelephone($cv->getTelephone());
-				$getCv->setAdresse($cv->getAdresse());
-				$getCv->setEmployeur($cv->getEmployeur());
-				$this->db->flush();
-			}else {
-				die("Objet ".$cv->getId()." does not existe!!");
-			}	
-		}
-	}
+	
 	
 
 	

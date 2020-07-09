@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-22 14:09:27
+/* Smarty version 3.1.30, created on 2020-06-24 14:12:12
   from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\layout\sidebar.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef09f7707c9f4_40027910',
+  'unifunc' => 'content_5ef3431c72ebd9_29886779',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a75728c6fd4a266761ff871b5f688c098173b88c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\layout\\sidebar.html',
-      1 => 1592698221,
+      1 => 1593000444,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef09f7707c9f4_40027910 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef3431c72ebd9_29886779 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
@@ -33,84 +33,82 @@ function content_5ef09f7707c9f4_40027910 (Smarty_Internal_Template $_smarty_tpl)
 public/image/sarr.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Moussa SARR</p>
+                <p><?php echo $_smarty_tpl->tpl_vars['user']->value->getNom_complet();?>
+</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
+        <?php if ($_smarty_tpl->tpl_vars['user']->value->getProfil()->getLibelle() == "DEMANDEUR_EMPLOI") {?>
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+        <form action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Offre/offre_search" method="post" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="motCle" class="form-control" placeholder="Rechercher une offre">
                 <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
             </div>
         </form>
+        <?php }?> <?php if ($_smarty_tpl->tpl_vars['user']->value->getProfil()->getLibelle() == "DEMANDEUR_EMPLOI") {?>
+        <!-- search form -->
+        <form action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Offre/offref_search" method="post" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="motCle" class="form-control" placeholder="Rechercher une offre favori">
+                <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+        </form>
+        <?php }?>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
+            <?php if ($_smarty_tpl->tpl_vars['user']->value->getProfil()->getLibelle() == "ENTREPRISE") {?>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa  fa-users"></i>
-                    <span>Clients</span>
+                    <i class="fa  fa-cogs"></i>
+                    <span>Entreprise</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Client"><i class="fa fa-circle-o"></i> Lister</a></li>
+Offre/add/<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"><i class="fa fa-circle-o"></i> Poster une offre</a></li>
+                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Offre/liste/<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"><i class="fa fa-circle-o"></i> Nos offres</a></li>
+                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Offre/liste/<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"><i class="fa fa-circle-o"></i> Voir les réponses</a></li>
                 </ul>
             </li>
+            <?php }?> <?php if ($_smarty_tpl->tpl_vars['user']->value->getProfil()->getLibelle() == "DEMANDEUR_EMPLOI") {?>
             <li class="treeview">
                 <a href="#">
                     <i class="fa  fa-folder-open"></i>
-                    <span>Comptes</span>
+                    <span>Demandeur d'emploi</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Compte/liste"><i class="fa fa-circle-o"></i> Liste</a></li>
+User/profil/<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"><i class="fa fa-circle-o"></i> Créer cv</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Operation"><i class="fa fa-circle-o"></i> Opérations</a></li>
+Cv/view/<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"><i class="fa fa-circle-o"></i> Mon cv</a></li>
+                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Reponse/repondre/<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"><i class="fa fa-circle-o"></i> Réponre à une offre</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-cogs"></i> <span>Administration</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Agence"><i class="fa fa-circle-o"></i> Agences</a></li>
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Employeur"><i class="fa fa-circle-o"></i> Employeurs</a></li>
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Caisse"><i class="fa fa-circle-o"></i> Caisses</a></li>
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Employe"><i class="fa fa-circle-o"></i> Employés</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user-secret"></i> <span>Sécurité</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Profil"><i class="fa fa-circle-o"></i> Profils</a></li>
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-"><i class="fa fa-circle-o"></i> Permission</a></li>
-                </ul>
-            </li>
-
+            <?php }?>
         </ul>
     </section>
     <!-- /.sidebar -->

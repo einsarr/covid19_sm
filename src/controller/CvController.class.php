@@ -9,22 +9,69 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\CvRepository;
+use src\model\UserRepository;
 
 class CvController extends Controller{
     public function __construct(){
         parent::__construct();
         session_start();
     }
+    public function add(){
+        $cv = new CvRepository();
+        extract($_POST);
+        $cvObject = new Cv();
+        $cvObject->setExperience($experience);
+        $cvObject->setFormation($formation);
+        $cvObject->setCompetence($competence);
+        $cvObject->setDivers($divers);
+        $cvObject->setUser($cv->getUser($user_id));
+        $cv->addCv($cvObject);
+        echo json_encode("cv ajouté avec succès");
+   }
 
-    public function cv_client($demandeur){
+    public function view($demandeur){
+        $userdb = new UserRepository();
+        $user = $userdb->getUser($demandeur);
+        $data['user'] = $user;
         $cvs = new CvRepository();
-        
-       $data['cv'] = $cvs->get_cv_demandeur(1);
+        $data['cv'] = $cvs->get_cv_demandeur($demandeur);
         return $this->view->load("cv/view",$data);
     }
+    public function edit($cv_id)
+    {
+        $cvs = new CvRepository();
+        $cv =  $cvs->getCv($cv_id);
+        $user = $cv->getUser();
+        $data['user'] = $user;
+        $data['cv'] = $cv;
+        return $this->view->load("cv/edit",$data);
+    }
+    // public function edit($id){
+    //     $cvs = new CvRepository();
+    //     $data = $cvs->get_cv_demandeur($id);
+    //     var_dump($id);exit;
+    //     $output = array(
+    //         'entete' => $data->getEntete(),
+    //         'contenu' => $data->getContenu(),
+    //     );
+    //     echo json_encode($output);
+    // }
+   
 
-
-
+    public function update(){
+        $cv = new CvRepository();
+        extract($_POST);
+        $cvObject = new Cv();
+        $cvObject->setId($cv_id);
+        $cvObject->setExperience($experience);
+        $cvObject->setFormation($formation);
+        $cvObject->setCompetence($competence);
+        $cvObject->setDivers($divers);
+        $cvObject->setUser($cv->getUser($user_id));
+        $ok = $cv->updateCv($cvObject);
+        return $this->view($user_id);
+    }
+    
 
 
 
@@ -57,11 +104,11 @@ class CvController extends Controller{
         );
         return $tab;
     }
-    public function add(){  
-        $categories = new CategorieRepository();
-        $data['categories'] = $categories->listeCategories();
-        $this->view->load("cvs/add",$data);
-    } 
+    // public function add(){  
+    //     $categories = new CategorieRepository();
+    //     $data['categories'] = $categories->listeCategories();
+    //     $this->view->load("cvs/add",$data);
+    // } 
     public function save(){
         $cv = new CvRepository();
         
@@ -160,21 +207,7 @@ class CvController extends Controller{
      * url pattern for this method
      * localhost/projectName/Cv/update
      */
-    public function update(){
-        $tdb = new CvRepository();
-        if(isset($_POST['modifier'])){
-            extract($_POST);
-            if(!empty($id) && !empty($valeur1) && !empty($valeur2)) {
-                $cvObject = new Cv();
-                $cvObject->setId($id);
-                $cvObject->setValeur1($valeur1);
-                $cvObject->setValeur2($valeur2);
-                $ok = $tdb->updateCv($cvObject);
-            }
-        }
-        
-        return $this->liste();
-    }
+    
      /** 
      * url pattern for this method
      * localhost/projectName/Cv/delete/value
@@ -189,13 +222,13 @@ class CvController extends Controller{
      * url pattern for this method
      * localhost/projectName/Cv/edit/value
      */
-    public function edit($id){
+    // public function edit($id){
         
-        $tdb = new CvRepository();
+    //     $tdb = new CvRepository();
         
-        $data['cv'] = $tdb->getCv($id);
-        var_dump($tdb->getCv($id));
-        return $this->view->load("cv/edit", $data);
-    }
+    //     $data['cv'] = $tdb->getCv($id);
+    //     var_dump($tdb->getCv($id));
+    //     return $this->view->load("cv/edit", $data);
+    // }
 }
 ?>

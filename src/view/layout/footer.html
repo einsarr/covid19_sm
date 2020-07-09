@@ -45,6 +45,89 @@
 <script src="{$url_base}public/template/dist/js/demo.js"></script>
 <script src="{$url_base}public/template/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="{$url_base}public/template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+    $(function() {
+        $('#example1').DataTable();
+        var base_url = "http://localhost:8081/my_projects/frameworks/covid19_sm/";
+        $(".view-reponse").on("click", function() {
+            var id = $(this).val();
+            $.ajax({
+                url: base_url + "Reponse/viewReponse/" + id,
+                type: "POST",
+                success: function(resp) {
+                    $('#modalReponse .modal-body').html(resp);
+                    //alert(resp);
+                }
+            });
+        });
+
+
+        $(document).on('submit', '#cv_form', function(event) {
+            event.preventDefault();
+            var experience = $('#experience').val();
+            var formation = $('#formation').val();
+            var competence = $('#competence').val();
+            var divers = $('#divers').val();
+            var user_id = $('#user_id').val();
+            if (experience != '' && formation != '' && competence != '' && divers != '') {
+                $.ajax({
+                    url: "{$url_base}Cv/add",
+                    method: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        alert(data);
+                        $('#cv_form')[0].reset();
+                        $('#modalCV').modal('hide');
+                    }
+                });
+            } else {
+                alert("Veuillez saisir tous les champs svp.");
+            }
+        });
+
+        $('#offre_form').on('submit', function(event) {
+            event.preventDefault();
+            var user_id = $('#user_id').val();
+            var categorie_id = $('#categorie_id').val();
+            var libelle = $('#libelle').val();
+            var favori = $('#favori').val();
+            if ($('#action').val() == 'Add') {
+                $.ajax({
+                    url: "{$url_base}Offre/AddAj",
+                    method: "post",
+                    data: $('form').serialize(),
+                    dataType: "json",
+                    success: function(strMessage) {
+                        $('#message').text(strMessage);
+                        $('#modalOffre').modal('hide');
+                        $('#offre_form')[0].reset();
+                        //load_produits();
+                    }
+                });
+            }
+            if ($('#action').val() == 'Edit') {
+                $.ajax({
+                    url: "{$url_base}Offre/Update",
+                    data: $('form').serialize(),
+                    type: "POST",
+                    dataType: "json",
+                    success: function(result) {
+                        $('#message').text(result);
+                        $('#modalOffre').modal('hide');
+                        load_produits();
+                    },
+                });
+            }
+        });
+
+
+
+
+    });
+</script>
 </body>
 
 </html>

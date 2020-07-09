@@ -1,0 +1,16 @@
+{foreach from=$reponses item=reponse}
+<tr>
+    <td>Libellé : {$reponse->getLibelle()}</td>
+</tr>
+<tr>
+    <td>Description : {$reponse->getLibelle()}</td>
+</tr>
+<tr>
+    <td>Demandeur : {$reponse->getOffre()->getEntreprise()->getNom_complet()}</td>
+</tr>
+<!-- <td>
+        <a href="{$url_base}Offre/edit/{$user->getId()}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+        <button type='button' name='edit' id="{$user->getId()}" data-toggle="modal" class='btn btn-info view-reponse' data-target="#modalReponse" value="{$offre->getId()}"><span class='fa fa-eye'></span></button>
+    </td> -->
+
+{/foreach}

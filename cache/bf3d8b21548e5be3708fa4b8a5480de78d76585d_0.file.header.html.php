@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-22 14:17:26
+/* Smarty version 3.1.30, created on 2020-06-24 09:14:12
   from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\layout\header.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef0a1562dbe38_63614606',
+  'unifunc' => 'content_5ef2fd44a92081_37631022',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bf3d8b21548e5be3708fa4b8a5480de78d76585d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\layout\\header.html',
-      1 => 1592828241,
+      1 => 1592931209,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0a1562dbe38_63614606 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef2fd44a92081_37631022 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,11 +48,6 @@ public/template/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 public/template/dist/css/skins/_all-skins.min.css">
 
-    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-public/template/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-public/template/bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 public/template/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">

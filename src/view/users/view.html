@@ -1,0 +1,190 @@
+{include file='src/view/layout/header.html'} {include file='src/view/layout/topbar.html'}{include file='src/view/layout/sidebar.html'}
+<div class="content-wrapper">
+    <div class="container">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" src="{$url_base}public/template/dist/img/user4-128x128.jpg" alt="User profile picture">
+
+                            <h3 class="profile-username text-center">{$user->getNom_complet()}</h3>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#timeline" data-toggle="tab">Mon CV</a></li>
+                            <li><a href="#settings" data-toggle="tab">Changer le mot de passe</a></li>
+                        </ul>
+                        <div class="tab-content">
+
+                            <div class="active tab-pane" id="timeline">
+                                <!-- The timeline -->
+                                <ul class="timeline timeline-inverse">
+                                    <!-- timeline time label -->
+                                    <li class="time-label">
+                                        <span class="bg-red">
+                                            <!--{if isset($cv)}{$cv->getEntete()}{/if}-->
+                                        </span>
+                                    </li>
+                                    <!-- /.timeline-label -->
+                                    <!-- timeline item -->
+                                    <li>
+                                        <i class="fa fa-envelope bg-blue"></i>
+
+                                        <div class="timeline-item">
+
+                                            <h3 class="timeline-header"><a href="#">Je certifie sur l'honneur les informations ci-dessous</a></h3>
+
+                                            <div class="timeline-body">
+                                                <!--{if isset($cv)}{$cv->getContenu()}{/if}-->
+                                            </div>
+                                            <div class="timeline-footer">
+                                                <a href="{$url_base}Cv/edit/{$cv->getId()}" class="btn btn-warning btn-xs">Modifier</a>
+                                                <a href="{$url_base}Cv/edit/{$cv->getId()}" class="btn btn-danger btn-xs">Supprimer</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <i class="fa fa-clock-o bg-gray"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="settings">
+                                <form class="form-horizontal" method="post" action="{$url_base}User/resetPassword">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-4 control-label">Mot de passe actuel</label>
+
+                                        <div class="col-sm-8">
+                                            <input type="password" name="password" class="form-control" id="inputName" placeholder="Saisir l'actuel mot de passe">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-sm-4 control-label">Nouveau mot de passe</label>
+
+                                        <div class="col-sm-8">
+                                            <input type="password" name="newpassword" class="form-control" id="inputEmail" placeholder="Saisir le nouveau mot de passe">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-4 control-label">Repéter le nouveau mot de passe</label>
+
+                                        <div class="col-sm-8">
+                                            <input type="password" name="repeatNewpassword" class="form-control" id="inputName" placeholder="Repéter le nouveau mot de passe">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-4 col-sm-10">
+                                            <button type="submit" class="btn btn-warning">Valider</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="modalProduit">
+    <div class="modal-dialog">
+        <form method="post" id="produit_form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title text-primary"></h4>
+                    <table class="table">
+                        <tr>
+                            <td>Prénom</td>
+                            <td>Moussa</td>
+                        </tr>
+                        <tr>
+                            <td>Nom</td>
+                            <td>SARR</td>
+                        </tr>
+                        <tr>
+                            <td>Téléphone</td>
+                            <td>777437440</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse</td>
+                            <td>Keur Massar</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" id="id">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </form>
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+<div class="modal fade" id="modalCv">
+    <div class="modal-dialog">
+        <form method="post" id="cv_form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title text-primary"></h4>
+                    <div class="form-group">
+                        <label>Entete</label>
+                        <input type="hidden" name="user_id" id="user_id" value="{$user->getId()}">
+                        <input type="text" name="entete" id="entete" class="form-control" placeholder="Entrer entête" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contenu</label>
+                        <textarea name="contenu" id="contenu" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" id="id">
+                    <input type="submit" name="action" id="action" class="btn btn-primary" value="Add">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </form>
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+{include file='src/view/layout/footer.html'}

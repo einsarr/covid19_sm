@@ -23,6 +23,7 @@ class LoginController extends Controller
         try {
             $userdb = new UserRepository();
             $user = $userdb->getUserByLogin($email, sha1($password));
+            
             if($user != null) {
                 if($user->getIs_email_confirm()=='yes')
                 {
@@ -32,6 +33,7 @@ class LoginController extends Controller
                     //return $this->view->redirect('Welcome');
 
                     $data['user'] = $user;
+                    //var_dump($user->getProfil()->getLibelle());exit;
                     return $this->view->load("admin/dashboard", $data);
                 }
                 else{

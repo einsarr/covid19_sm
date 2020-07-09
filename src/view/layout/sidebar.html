@@ -8,75 +8,67 @@
                 <img src="{$url_base}public/image/sarr.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Moussa SARR</p>
+                <p>{$user->getNom_complet()}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
+        {if $user->getProfil()->getLibelle()=="DEMANDEUR_EMPLOI"}
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+        <form action="{$url_base}Offre/offre_search" method="post" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="motCle" class="form-control" placeholder="Rechercher une offre">
                 <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
             </div>
         </form>
+        {/if} {if $user->getProfil()->getLibelle()=="DEMANDEUR_EMPLOI"}
+        <!-- search form -->
+        <form action="{$url_base}Offre/offref_search" method="post" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="motCle" class="form-control" placeholder="Rechercher une offre favori">
+                <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+        </form>
+        {/if}
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
+            {if $user->getProfil()->getLibelle()=="ENTREPRISE"}
             <li class="treeview">
                 <a href="#">
-                    <i class="fa  fa-users"></i>
-                    <span>Clients</span>
+                    <i class="fa  fa-cogs"></i>
+                    <span>Entreprise</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{$url_base}Client"><i class="fa fa-circle-o"></i> Lister</a></li>
+                    <li><a href="{$url_base}Offre/add/{$user->getId()}"><i class="fa fa-circle-o"></i> Poster une offre</a></li>
+                    <li><a href="{$url_base}Offre/liste/{$user->getId()}"><i class="fa fa-circle-o"></i> Nos offres</a></li>
+                    <li><a href="{$url_base}Offre/liste/{$user->getId()}"><i class="fa fa-circle-o"></i> Voir les réponses</a></li>
                 </ul>
             </li>
+            {/if} {if $user->getProfil()->getLibelle()=="DEMANDEUR_EMPLOI"}
             <li class="treeview">
                 <a href="#">
                     <i class="fa  fa-folder-open"></i>
-                    <span>Comptes</span>
+                    <span>Demandeur d'emploi</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{$url_base}Compte/liste"><i class="fa fa-circle-o"></i> Liste</a></li>
-                    <li><a href="{$url_base}Operation"><i class="fa fa-circle-o"></i> Opérations</a></li>
+                    <li><a href="{$url_base}User/profil/{$user->getId()}"><i class="fa fa-circle-o"></i> Créer cv</a></li>
+                    <li><a href="{$url_base}Cv/view/{$user->getId()}"><i class="fa fa-circle-o"></i> Mon cv</a></li>
+                    <li><a href="{$url_base}Reponse/repondre/{$user->getId()}"><i class="fa fa-circle-o"></i> Réponre à une offre</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-cogs"></i> <span>Administration</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{$url_base}Agence"><i class="fa fa-circle-o"></i> Agences</a></li>
-                    <li><a href="{$url_base}Employeur"><i class="fa fa-circle-o"></i> Employeurs</a></li>
-                    <li><a href="{$url_base}Caisse"><i class="fa fa-circle-o"></i> Caisses</a></li>
-                    <li><a href="{$url_base}Employe"><i class="fa fa-circle-o"></i> Employés</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user-secret"></i> <span>Sécurité</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{$url_base}Profil"><i class="fa fa-circle-o"></i> Profils</a></li>
-                    <li><a href="{$url_base}"><i class="fa fa-circle-o"></i> Permission</a></li>
-                </ul>
-            </li>
-
+            {/if}
         </ul>
     </section>
     <!-- /.sidebar -->

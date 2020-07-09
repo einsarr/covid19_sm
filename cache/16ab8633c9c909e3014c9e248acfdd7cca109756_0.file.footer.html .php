@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-24 13:49:42
-  from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\layout\footer.html" */
+/* Smarty version 3.1.30, created on 2020-06-25 01:09:14
+  from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\layout\footer.html " */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef33dd6cba9b3_44151808',
+  'unifunc' => 'content_5ef3dd1a6aa924_37676383',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd54671d33f2c125b76dc63e714565f0ca6953e5d' => 
+    '16ab8633c9c909e3014c9e248acfdd7cca109756' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\layout\\footer.html',
+      0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\layout\\footer.html ',
       1 => 1592999360,
       2 => 'file',
     ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef33dd6cba9b3_44151808 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef3dd1a6aa924_37676383 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- /.content-wrapper -->
 <footer class="main-footer">

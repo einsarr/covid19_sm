@@ -9,9 +9,13 @@ class Cv
     /** @Id @Column(type="integer") @GeneratedValue **/
     private $id;
     /** @Column(type="string") **/
-    private $entete;
+    private $experience;
     /** @Column(type="string") **/
-    private $contenu;
+    private $formation;
+    /** @Column(type="string") **/
+    private $competence;
+    /** @Column(type="string") **/
+    private $divers;
     
     /**
      * One CV has One User.
@@ -32,14 +36,6 @@ class Cv
         $this->id = $id;
     }
 
-    public function getEntete()
-    {
-        return $this->entete;
-    }
-    public function setEntete($entete)
-    {
-        $this->entete = $entete;
-    }
 
     public function getUser()
     {
@@ -50,16 +46,38 @@ class Cv
         $this->user = $user;
     }
 
-    public function getContenu()
+    public function getExperience()
     {
-        return $this->contenu;
+        return $this->experience;
     }
-    public function setContenu($contenu)
+    public function setExperience($experience)
     {
-        $this->contenu = $contenu;
+        $this->experience = $experience;
     }
-    
-    
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
+    }
+    public function getCompetence()
+    {
+        return $this->competence;
+    }
+    public function setCompetence($competence)
+    {
+        $this->competence = $competence;
+    }
+    public function getDivers()
+    {
+        return $this->divers;
+    }
+    public function setDivers($divers)
+    {
+        $this->divers = $divers;
+    }
 }
 
 ?>

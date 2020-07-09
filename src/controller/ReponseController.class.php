@@ -9,24 +9,61 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\ReponseRepository;
+use src\model\UserRepository;
+use src\model\OffreRepository;
 
 class ReponseController extends Controller{
     public function __construct(){
         parent::__construct();
     }
 
+    public function viewReponse($id){
+        extract($_POST);
+        $reponses = new ReponseRepository();
+        $data['reponses'] = $reponses->reponses_offres($id);
+        $this->view->load("reponses/details_reponses_offre",$data);
+    }
+    public function repondre($user_id)
+    {
+        $userdb = new UserRepository();
+        $user = $userdb->getUser($user_id);
+        $data['user'] = $user;
+        $offre = new OffreRepository();
+        $data['offres'] = $offre->listeOffres();
+        return $this->view->load("Reponses/add",$data);
+    }
     public function save(){
         $reponse = new ReponseRepository();
-        
+        $offre = new OffreRepository();
         extract($_POST);
+
+        $userdb = new UserRepository();
+        $user = $userdb->getUser($user_id);
+        $data['user'] = $user;
+
         $reponseObject = new Reponse();
         $reponseObject->setlibelle(addslashes($libelle));
-        $reponseObject->setDescription(addslashes($description));
         $reponseObject->setOffre($reponse->getOffre($offre_id));
+        $reponseObject->setDescription(addslashes($description));
         $reponse->addReponse($reponseObject);
         $data['message_success'] = "Enrégistrement réussie";
         $this->view->load("offres/postuler",$data); 
     }
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+   
     /** 
      * url pattern for this method
      * localhost/projectName/Reponse/

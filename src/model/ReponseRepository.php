@@ -19,6 +19,28 @@ class ReponseRepository extends Model{
 	public function __construct(){
 		parent::__construct();
 	}
+	public function get_reponse_offre_entreprise($entreprise_id){
+		$query = $this->db
+						  ->createQuery("SELECT r FROM Reponse r JOIN r.offre e WHERE e.entreprise = :entreprise_id")
+						  ->setParameter('entreprise_id', $entreprise_id);
+		$user = $query->getResult();
+		return $user;
+	}
+	public function reponses_offres($offre_id){
+		$query = $this->db
+						  ->createQuery("SELECT r FROM Reponse r  WHERE r.offre = :offre_id")
+						  ->setParameter('offre_id', $offre_id);
+		$user = $query->getResult();
+		return $user;
+	}
+	public function getAll(){
+        if($this->db != null)
+        {
+            return $this->db->createQuery("SELECT r FROM Reponse r")->getResult();// array of User objects
+        }
+	}
+	
+	
 	public function getOffre($id)
 	{
 		if($this->db != null)

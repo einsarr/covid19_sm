@@ -7,7 +7,7 @@
                 <!-- /.box -->
                 <div class="box ">
                     <div class="box-header">
-                        AJOUTER UNE OFFRE
+                        POSTULER A UNE OFFRE
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -17,30 +17,26 @@
                         <div class="text-center">
                             {if isset($message_error)} <span class="text-danger">{$message_error}</span> {/if}
                         </div>
-                        <form method="POST" action="{$url_base}Offre/save" enctype="multipart/form-data">
+                        <form method="POST" action="{$url_base}Reponse/save" enctype="multipart/form-data">
                             <div class="form-group">
-                                <input type="hidden" name="user_id" value="{$user->getId()}" d="user_id">
+                                <input type="hidden" name="user_id" value="{$user->getId()}" id="user_id">
                             </div>
                             <div class="form-group">
-                                <label class="">La categorie</label>
-                                <select class="form-control" name="categorie_id" id="categorie_id">
-                                    <option value="">---Choisir le categorie---</option>
-                                    {foreach from=$categories item=categorie}
-                                    <option value="{$categorie->getId()}">{$categorie->getLibelle()}</option>
+                                <label class="">L'offre</label>
+                                <select class="form-control" name="offre_id" id="offre_id">
+                                    <option value="">---Choix de l'offre---</option>
+                                    {foreach from=$offres item=offre}
+                                    <option value="{$offre->getId()}">{$offre->getLibelle()}</option>
                                     {/foreach}
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="libelle">Intitullé de l'offre</label>
+                                <label for="libelle">Contenu</label>
                                 <textarea rows="4" cols="30" class="form-control" name="libelle"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="favori">Favori</label>
-                                <select name="favori" id="favori" class="form-control">
-                                    <option value="">Selectionner</option>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
+                                <label for="libelle">Description</label>
+                                <textarea name="description" id="description" cols="30" rows="3" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="action" class="btn btn-primary" value="Enrégistrer" />

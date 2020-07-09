@@ -1,4 +1,36 @@
-{include file='src/view/layout/header.html'} {include file='src/view/layout/topbar.html'}{include file='src/view/layout/sidebar.html'}
+<?php
+/* Smarty version 3.1.30, created on 2020-06-25 01:08:08
+  from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\users\profil.html" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_5ef3dcd84ed2b7_07330009',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'cea8fa5719e0994386bdc40aa755db27d245e464' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\users\\profil.html',
+      1 => 1592927319,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:src/view/layout/header.html' => 1,
+    'file:src/view/layout/topbar.html' => 1,
+    'file:src/view/layout/sidebar.html' => 1,
+    'file:src/view/layout/footer.html' => 1,
+  ),
+),false)) {
+function content_5ef3dcd84ed2b7_07330009 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:src/view/layout/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+ <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+$_smarty_tpl->_subTemplateRender("file:src/view/layout/sidebar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
 <div class="content-wrapper">
     <div class="container">
@@ -8,9 +40,11 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="{$url_base}public/template/dist/img/user4-128x128.jpg" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/user4-128x128.jpg" alt="User profile picture">
 
-                            <h3 class="profile-username text-center">{$user->getNom_complet()}</h3>
+                            <h3 class="profile-username text-center"><?php echo $_smarty_tpl->tpl_vars['user']->value->getNom_complet();?>
+</h3>
                             <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#modalDetails">
                                 <b>Détails</b>
                               </button><br>
@@ -32,7 +66,8 @@
                         <div class="tab-content">
 
                             <div class="active tab-pane" id="settings">
-                                <form class="form-horizontal" method="post" action="{$url_base}User/resetPassword">
+                                <form class="form-horizontal" method="post" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+User/resetPassword">
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-4 control-label">Mot de passe actuel</label>
 
@@ -91,7 +126,8 @@
                     <div class="modal-body ">
                         <div class="form-group">
                             <label>Expérience</label>
-                            <input type="hidden" name="user_id" id="user_id" value="{$user->getId()}">
+                            <input type="hidden" name="user_id" id="user_id" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+">
                             <textarea name="experience" id="experience" cols="30" rows="2" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
@@ -136,16 +172,19 @@
                     <table class="table">
                         <tr>
                             <td>Prénom</td>
-                            <td>{$user->getNom_complet()}</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getNom_complet();?>
+</td>
                         </tr>
 
                         <tr>
                             <td>Téléphone</td>
-                            <td>{$user->getTelephone()}</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getTelephone();?>
+</td>
                         </tr>
                         <tr>
                             <td>Adresse</td>
-                            <td>{$user->getAdresse()}</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getAdresse();?>
+</td>
                         </tr>
                     </table>
                 </div>
@@ -159,4 +198,6 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-{include file='src/view/layout/footer.html'}
+<?php $_smarty_tpl->_subTemplateRender("file:src/view/layout/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}

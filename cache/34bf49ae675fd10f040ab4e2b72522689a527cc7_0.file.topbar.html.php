@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-22 13:39:16
+/* Smarty version 3.1.30, created on 2020-07-09 01:59:21
   from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\layout_front\topbar.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef0986418dcb3_92753922',
+  'unifunc' => 'content_5f065dd9c66cd2_19970780',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '34bf49ae675fd10f040ab4e2b72522689a527cc7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\layout_front\\topbar.html',
-      1 => 1592825951,
+      1 => 1594252758,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0986418dcb3_92753922 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f065dd9c66cd2_19970780 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <header class="main-header">
     <nav class="navbar navbar-static-top">
@@ -36,46 +36,10 @@ Welcome" class="navbar-brand"><b>Accueil</b></a>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Welcome/presentation">Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="" data-toggle="modal" class='btn btn-info view-reponse' data-target="#modalPresentation">Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
 
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Cv/add">Mon CV</a></li>
-
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Offre/add">Ajouter une offre</a></li>
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Categorie/add">Ajouter catégorie</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <?php if (isset($_smarty_tpl->tpl_vars['categories']->value)) {?> <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'categorie');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['categorie']->value) {
-?>
-                            <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Offre/get/<?php echo $_smarty_tpl->tpl_vars['categorie']->value->getId();?>
-"><?php echo $_smarty_tpl->tpl_vars['categorie']->value->getLibelle();?>
-</a></li>
-                            <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
- <?php }?>
-                        </ul>
-                    </li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search" method="post" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Offre/offre_search">
-                    <div class="form-group">
-                        <input type="text" name="motCle" class="form-control" id="navbar-search-input" placeholder="Saisir un mot clé">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="search">
-                    </div>
-                </form>
+
             </div>
             <!-- /.navbar-collapse -->
             <!-- Navbar Right Menu -->
@@ -148,5 +112,38 @@ User/profil" class="btn btn-warning btn-flat">Mon profil</a>
         </div>
         <!-- /.container-fluid -->
     </nav>
-</header><?php }
+</header>
+
+
+<div class="modal fade" id="modalPresentation">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true ">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body ">
+                    <h2>BIENVENUE SUR LE SITE DE RECHERCHE ET D'OFFFRES D'EMPLOI</h2>
+                    <img src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/image/offres.jpg" width="100%" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<?php echo '<script'; ?>
+>
+    $(document).ready(function() {
+        $(window).on('load', function() {
+            $('#modalPresentation').modal('show');
+        });
+    });
+<?php echo '</script'; ?>
+><?php }
 }

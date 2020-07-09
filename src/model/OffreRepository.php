@@ -19,6 +19,15 @@ class OffreRepository extends Model{
 	public function __construct(){
 		parent::__construct();
 	}
+
+	public function get_offre_entreprise($entreprise_id){
+        $query = $this->db
+            ->createQuery('SELECT o FROM Offre o WHERE o.entreprise = :entreprise_id')
+            ->setParameter('entreprise_id', $entreprise_id);
+        $user = $query->getResult();
+        return $user;
+    }
+
 	public function addOffre($offre)
 	{
 		if($this->db != null)
@@ -52,6 +61,10 @@ class OffreRepository extends Model{
 			return $this->db->createQuery("SELECT p FROM Offre p")->getResult();
 		}
 	}
+	public function getUser($id)
+    {
+        return $this->db->getRepository("User")->find(array("id"=>$id));
+    }
 	
 	/**
 	 * DQL
@@ -61,6 +74,14 @@ class OffreRepository extends Model{
 		if($this->db != null)
 		{
 			$query = $this->db->createQuery("SELECT o FROM Offre o WHERE o.libelle LIKE '%$motCle%'");
+			return $query->getResult();	
+		}
+	}
+	public function listeOffresfByKeyWord($motCle)
+	{
+		if($this->db != null)
+		{
+			$query = $this->db->createQuery("SELECT o FROM Offre o WHERE o.favori=1 AND o.libelle LIKE '%$motCle%'");
 			return $query->getResult();	
 		}
 	}
@@ -76,7 +97,7 @@ class OffreRepository extends Model{
 	{
 		if($this->db != null)
 		{
-			return $this->db->getRepository('Offre')->find(array('categorie_id' => $id));
+			return $this->db->getRepository('Offre')->find(array('id' => $id));
 		}
 	}
 	

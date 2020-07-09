@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-24 09:27:05
-  from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\offres\add.html" */
+/* Smarty version 3.1.30, created on 2020-06-24 18:05:00
+  from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\Reponses\add.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef30049b83529_93847450',
+  'unifunc' => 'content_5ef379ac67a360_43760349',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '75ffccbda06595782e2b40a45e78962d80975ecc' => 
+    'fcd2cdaaa8be6c6828552f1d54d759ddcf2e6f11' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\offres\\add.html',
-      1 => 1592932580,
+      0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\Reponses\\add.html',
+      1 => 1593002467,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:src/view/layout/footer.html' => 1,
   ),
 ),false)) {
-function content_5ef30049b83529_93847450 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef379ac67a360_43760349 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:src/view/layout/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -39,7 +39,7 @@ $_smarty_tpl->_subTemplateRender("file:src/view/layout/sidebar.html", $_smarty_t
                 <!-- /.box -->
                 <div class="box ">
                     <div class="box-header">
-                        AJOUTER UNE OFFRE
+                        POSTULER A UNE OFFRE
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -52,22 +52,22 @@ $_smarty_tpl->_subTemplateRender("file:src/view/layout/sidebar.html", $_smarty_t
 </span> <?php }?>
                         </div>
                         <form method="POST" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Offre/save" enctype="multipart/form-data">
+Reponse/save" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="hidden" name="user_id" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
-" d="user_id">
+" id="user_id">
                             </div>
                             <div class="form-group">
-                                <label class="">La categorie</label>
-                                <select class="form-control" name="categorie_id" id="categorie_id">
-                                    <option value="">---Choisir le categorie---</option>
+                                <label class="">L'offre</label>
+                                <select class="form-control" name="offre_id" id="offre_id">
+                                    <option value="">---Choix de l'offre---</option>
                                     <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'categorie');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['offres']->value, 'offre');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['categorie']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['offre']->value) {
 ?>
-                                    <option value="<?php echo $_smarty_tpl->tpl_vars['categorie']->value->getId();?>
-"><?php echo $_smarty_tpl->tpl_vars['categorie']->value->getLibelle();?>
+                                    <option value="<?php echo $_smarty_tpl->tpl_vars['offre']->value->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['offre']->value->getLibelle();?>
 </option>
                                     <?php
 }
@@ -78,16 +78,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="libelle">Intitullé de l'offre</label>
+                                <label for="libelle">Contenu</label>
                                 <textarea rows="4" cols="30" class="form-control" name="libelle"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="favori">Favori</label>
-                                <select name="favori" id="favori" class="form-control">
-                                    <option value="">Selectionner</option>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
+                                <label for="libelle">Description</label>
+                                <textarea name="description" id="description" cols="30" rows="3" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="action" class="btn btn-primary" value="Enrégistrer" />

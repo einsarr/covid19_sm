@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-06-22 12:09:49
+/* Smarty version 3.1.30, created on 2020-06-24 09:14:17
   from "C:\xampp\htdocs\my_projects\frameworks\covid19_sm\src\view\admin\accueil.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ef0836d4f7116_30448339',
+  'unifunc' => 'content_5ef2fd49833543_72778904',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8afb8f884bba4a82ee461128f5c4fb0ec567314' => 
     array (
       0 => 'C:\\xampp\\htdocs\\my_projects\\frameworks\\covid19_sm\\src\\view\\admin\\accueil.html',
-      1 => 1592818940,
+      1 => 1592934507,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:src/view/layout_front/footer.html' => 1,
   ),
 ),false)) {
-function content_5ef0836d4f7116_30448339 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef2fd49833543_72778904 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Full Width Column -->
 <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -130,5 +130,32 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </section>
         <!-- /.content -->
         <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+
+
+
+        <div class="modal fade" id="presentation">
+            <div class="modal-dialog">
+                <form method="post" id="produit_form">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="modal-title text-primary">Détails de mon profil</h4>
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" id="id">
+                            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </form>
+            </div>
+        </div><?php }
 }
